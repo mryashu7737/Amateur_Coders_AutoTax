@@ -1,0 +1,58 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Tax Saving Strategy</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+</head>
+<body>
+    <div class="container">
+        <h1>Get Your Personalized Tax Saving Strategy</h1>
+        <form id="taxForm">
+            <label for="income">Income:</label>
+            <input type="number" id="income" name="income" required><br>
+
+            <label for="investments">Investments:</label>
+            <input type="number" id="investments" name="investments" required><br>
+
+            <label for="insurance">Insurance Premiums:</label>
+            <input type="number" id="insurance" name="insurance" required><br>
+
+            <label for="loan">Loan Amount:</label>
+            <input type="number" id="loan" name="loan" required><br>
+
+            <label for="expenses">Expenses:</label>
+            <input type="number" id="expenses" name="expenses" required><br>
+
+            <button type="button" onclick="submitForm()">Submit</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function submitForm() {
+            const form = document.getElementById('taxForm');
+            const formData = new FormData(form);
+
+            fetch('/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = `Personalized Tax Saving Strategy: ${data.strategy}`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerText = 'An error occurred while submitting the form.';
+            });
+        }
+    </script>
+</body>
+</html>
