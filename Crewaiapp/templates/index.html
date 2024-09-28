@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITR Form Filler</title>
+    <!-- Link to the external CSS file for styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Link to the external JS file for form submission -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>ITR Form Filler</h2>
+        <!-- The Form that will capture user data -->
+        <form id="taxForm">
+            <label for="pan">PAN:</label>
+            <input type="text" id="pan" name="PAN" required>
+
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="First Name" required>
+
+            <label for="middleName">Middle Name:</label>
+            <input type="text" id="middleName" name="Middle Name">
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="Last Name" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="text" id="dob" name="Date of Birth" placeholder="DD/MM/YYYY" required>
+
+            <label for="aadhaar">Aadhaar Number:</label>
+            <input type="text" id="aadhaar" name="Aadhaar Number" required>
+
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" id="mobile" name="Mobile Number" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="Email Address" required>
+
+            <!-- Button to submit the form -->
+            <button type="button" onclick="submitForm()">Submit</button>
+        </form>
+        
+        <!-- This is where we will display the status and download link -->
+        <div class="status" id="status"></div>
+    </div>
+</body>
+</html>
